@@ -4,6 +4,7 @@ import React from 'react';
 import { NavigationProp, ParamListBase } from '@react-navigation/native';
 import NavBar from './nav/NavBar';
 import colors from '../components/utils/colors';
+import PlayerBar from './common/PlaybackBar';
 
 type Props = {
   navigation: NavigationProp<ParamListBase>;
@@ -14,7 +15,10 @@ export default function HomeScreen({ navigation }: Props) {
     <View style={styles.container}>
       <Text>Radio, Testing...</Text>
       <Image source={require('../assets/broadcast.png')} style={styles.image} />
-      <NavBar />
+      <View>
+        <PlayerBar />
+        <NavBar />
+      </View>
     </View>
   );
 }
