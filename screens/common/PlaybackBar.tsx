@@ -1,29 +1,30 @@
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import React, { useEffect } from 'react';
 import { LinearGradient } from 'expo-linear-gradient';
-import { MaterialIcons } from '@expo/vector-icons';
+import { Ionicons } from '@expo/vector-icons';
 import { Audio } from 'expo-av';
 
 export default function PlayerBar() {
   const [isPlaying, setIsPlaying] = React.useState(false);
+  const [message, setMessage] = React.useState('Ready');
   const [audio, setAudio] = React.useState<Audio.Sound>();
 
   async function startPlayback() {
-    console.log('Loading Sound');
+    setMessage('Loading...');
     setIsPlaying(true);
     const { sound } = await Audio.Sound.createAsync({
       uri: 'http://stream.zeno.fm/0tn0vg432mzuv',
     });
     setAudio(sound);
 
-    console.log('Playing Sound');
+    setMessage('Now Playing');
     await sound.playAsync();
   }
 
   async function stopPlayback() {
-    console.log('Stopping Sound');
     await audio?.stopAsync();
     setIsPlaying(false);
+    setMessage('Stopped');
   }
 
   React.useEffect(() => {
@@ -44,17 +45,15 @@ export default function PlayerBar() {
     >
       {isPlaying ? (
         <TouchableOpacity onPress={stopPlayback}>
-          <MaterialIcons name='pause' size={28} color='white' />
+          <Ionicons name='pause' size={24} color='white' />
         </TouchableOpacity>
       ) : (
         <TouchableOpacity onPress={startPlayback}>
-          <MaterialIcons name='play-arrow' size={28} color='white' />
+          <Ionicons name='play' size={24} color='white' />
         </TouchableOpacity>
       )}
 
-      <Text style={styles.text}>
-        {isPlaying ? 'Radio Playing...' : 'Ready'}
-      </Text>
+      <Text style={styles.text}>{message}</Text>
     </LinearGradient>
   );
 }
