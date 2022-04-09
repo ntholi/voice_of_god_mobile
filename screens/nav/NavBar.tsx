@@ -3,8 +3,8 @@ import React from 'react';
 import { MaterialIcons, FontAwesome5 } from '@expo/vector-icons';
 import colors from '../../components/utils/colors';
 
-const inactive = colors.dim;
-const active = colors.light;
+const inactive = '#858585';
+const active = '#000';
 
 export default function Nav() {
   return (
@@ -15,11 +15,13 @@ export default function Nav() {
       </TouchableOpacity>
       <TouchableOpacity style={[styles.button]}>
         <MaterialIcons name='school' size={20} color={inactive} />
-        <Text style={[styles.buttonText, { color: inactive }]}>Search</Text>
+        <Text style={[styles.buttonText, { color: inactive }]}>
+          Training Center
+        </Text>
       </TouchableOpacity>
       <TouchableOpacity style={[styles.button]}>
         <FontAwesome5 name='money-bill' size={20} color={inactive} />
-        <Text style={[styles.buttonText, { color: inactive }]}>Map</Text>
+        <Text style={[styles.buttonText, { color: inactive }]}>Giving</Text>
       </TouchableOpacity>
     </View>
   );
@@ -31,7 +33,9 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    backgroundColor: colors.darker,
+
+    borderTopWidth: 1,
+    borderTopColor: colors.lightGrey,
   },
   button: {
     flex: 1,
@@ -41,7 +45,6 @@ const styles = StyleSheet.create({
     paddingVertical: 5,
   },
   buttonText: {
-    color: colors.light,
     fontSize: 12,
     marginTop: 5,
   },

@@ -12,7 +12,11 @@ export default function App() {
       <StatusBar barStyle='dark-content' />
       <NavigationContainer>
         <Stack.Navigator initialRouteName='Home'>
-          <Stack.Screen name='Home' component={HomeScreen} />
+          <Stack.Screen
+            name='Home'
+            component={HomeScreen}
+            options={{ headerShown: false }}
+          />
           <Stack.Screen name='Details' component={TrainingCenter} />
         </Stack.Navigator>
       </NavigationContainer>
