@@ -14,7 +14,7 @@ export default function Nav() {
         <Text style={[styles.buttonText, { color: active }]}>Radio</Text>
       </TouchableOpacity>
       <TouchableOpacity style={[styles.button]}>
-        <MaterialIcons name='school' size={20} color={inactive} />
+        <MaterialIcons name='school' size={24} color={inactive} />
         <Text style={[styles.buttonText, { color: inactive }]}>
           Training Center
         </Text>
