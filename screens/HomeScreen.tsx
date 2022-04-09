@@ -3,7 +3,6 @@ import React from 'react';
 
 import { NavigationProp, ParamListBase } from '@react-navigation/native';
 import NavBar from './nav/NavBar';
-import colors from '../components/utils/colors';
 import PlayerBar from './common/PlaybackBar';
 
 type Props = {

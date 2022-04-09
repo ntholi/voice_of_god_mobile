@@ -2,13 +2,38 @@ import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import React, { useEffect } from 'react';
 import { LinearGradient } from 'expo-linear-gradient';
 import { MaterialIcons } from '@expo/vector-icons';
+import { Audio } from 'expo-av';
 
 export default function PlayerBar() {
   const [isPlaying, setIsPlaying] = React.useState(false);
+  const [audio, setAudio] = React.useState<Audio.Sound>();
 
-  useEffect(() => {
-    console.log('Is playing: ', isPlaying);
-  }, [isPlaying]);
+  async function startPlayback() {
+    console.log('Loading Sound');
+    setIsPlaying(true);
+    const { sound } = await Audio.Sound.createAsync({
+      uri: 'http://stream.zeno.fm/0tn0vg432mzuv',
+    });
+    setAudio(sound);
+
+    console.log('Playing Sound');
+    await sound.playAsync();
+  }
+
+  async function stopPlayback() {
+    console.log('Stopping Sound');
+    await audio?.stopAsync();
+    setIsPlaying(false);
+  }
+
+  React.useEffect(() => {
+    return audio
+      ? () => {
+          console.log('Unloading Sound');
+          audio.unloadAsync();
+        }
+      : undefined;
+  }, [audio]);
 
   return (
     <LinearGradient
@@ -18,11 +43,11 @@ export default function PlayerBar() {
       end={{ x: 1, y: 0.5 }}
     >
       {isPlaying ? (
-        <TouchableOpacity onPress={() => setIsPlaying(false)}>
+        <TouchableOpacity onPress={stopPlayback}>
           <MaterialIcons name='pause' size={28} color='white' />
         </TouchableOpacity>
       ) : (
-        <TouchableOpacity onPress={() => setIsPlaying(true)}>
+        <TouchableOpacity onPress={startPlayback}>
           <MaterialIcons name='play-arrow' size={28} color='white' />
         </TouchableOpacity>
       )}
