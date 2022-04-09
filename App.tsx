@@ -1,7 +1,7 @@
 import { StatusBar } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import HomeScreen from './screens/HomeScreen';
+import HomeScreen from './screens/home/HomeScreen';
 import TrainingCenter from './screens/TrainingCenter';
 
 const Stack = createNativeStackNavigator();
