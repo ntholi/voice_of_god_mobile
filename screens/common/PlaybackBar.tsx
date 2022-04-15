@@ -11,14 +11,19 @@ export default function PlayerBar() {
 
   async function startPlayback() {
     setMessage('Loading...');
-    setIsPlaying(true);
-    const { sound } = await Audio.Sound.createAsync({
-      uri: 'http://stream.zeno.fm/0tn0vg432mzuv',
-    });
-    setAudio(sound);
+    try {
+      const { sound } = await Audio.Sound.createAsync({
+        uri: 'http://stream.zeno.fm/0tn0vg432mzuv',
+      });
+      setAudio(sound);
 
-    setMessage('Now Playing');
-    await sound.playAsync();
+      setMessage('Now Playing');
+      setIsPlaying(true);
+      await sound.playAsync();
+    } catch (error: any) {
+      setMessage('Error, try again');
+      alert('Error: ' + error.message);
+    }
   }
 
   async function stopPlayback() {

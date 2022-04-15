@@ -1,6 +1,6 @@
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import React from 'react';
-import { MaterialIcons, FontAwesome5 } from '@expo/vector-icons';
+import { MaterialIcons } from '@expo/vector-icons';
 import colors from '../../components/utils/colors';
 
 const inactive = '#858585';
@@ -10,7 +10,7 @@ export default function Nav() {
   return (
     <View style={styles.container}>
       <TouchableOpacity style={[styles.button]}>
-        <MaterialIcons name='radio' size={20} color={active} />
+        <MaterialIcons name='radio' size={24} color={active} />
         <Text style={[styles.buttonText, { color: active }]}>Radio</Text>
       </TouchableOpacity>
       <TouchableOpacity style={[styles.button]}>
@@ -20,7 +20,11 @@ export default function Nav() {
         </Text>
       </TouchableOpacity>
       <TouchableOpacity style={[styles.button]}>
-        <FontAwesome5 name='money-bill' size={20} color={inactive} />
+        <MaterialIcons name='live-tv' size={24} color={inactive} />
+        <Text style={[styles.buttonText, { color: inactive }]}>Broadcast</Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={[styles.button]}>
+        <MaterialIcons name='money' size={24} color={inactive} />
         <Text style={[styles.buttonText, { color: inactive }]}>Giving</Text>
       </TouchableOpacity>
     </View>

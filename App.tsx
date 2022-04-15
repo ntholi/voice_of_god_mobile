@@ -9,7 +9,7 @@ const Stack = createNativeStackNavigator();
 export default function App() {
   return (
     <>
-      <StatusBar backgroundColor='#4A148C' />
+      <StatusBar backgroundColor='#212121' />
       <NavigationContainer>
         <Stack.Navigator initialRouteName='Home'>
           <Stack.Screen
