@@ -35,9 +35,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-
-    borderTopWidth: 1,
-    borderTopColor: colors.lightGrey,
   },
   button: {
     flex: 1,
