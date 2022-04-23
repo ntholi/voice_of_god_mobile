@@ -5,7 +5,7 @@ import { MaterialIcons } from '@expo/vector-icons';
 import { Audio } from 'expo-av';
 
 enum State {
-  Ready = 'ready',
+  Ready = 'Ready',
   Loading = 'Loading...',
   Playing = 'Playing',
   Stopped = 'Stopped',

@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, Image } from 'react-native';
+import { StyleSheet, Text, View, Image, ImageBackground } from 'react-native';
 import React from 'react';
 
 import { NavigationProp, ParamListBase } from '@react-navigation/native';
@@ -13,11 +13,16 @@ type Props = {
 export default function HomeScreen({ navigation }: Props) {
   return (
     <View style={styles.container}>
-      <Header />
-      <Image
-        source={require('../../assets/broadcast.png')}
-        style={styles.image}
-      />
+      <ImageBackground
+        source={require('../../assets/images/wave.png')}
+        resizeMode='cover'
+        style={styles.headerImage}
+      >
+        <Text style={styles.text}>Voice of God</Text>
+        <View style={styles.info}>
+          <Text>Playing...</Text>
+        </View>
+      </ImageBackground>
       <View>
         <PlayerBar />
         <NavBar />
@@ -31,8 +36,21 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'space-between',
   },
-  image: {
-    width: '100%',
-    height: '40%',
+  headerImage: {
+    height: '60%',
+    flex: 1,
+    alignItems: 'center',
+  },
+  info: {
+    top: '20%',
+    width: '85%',
+    height: '60%',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'white',
+    borderRadius: 500,
+  },
+  text: {
+    color: 'white',
   },
 });
