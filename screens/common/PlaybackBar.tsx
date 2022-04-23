@@ -1,41 +1,59 @@
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import React, { useEffect } from 'react';
+import React, { ReactElement, useEffect, useState } from 'react';
 import { LinearGradient } from 'expo-linear-gradient';
-import { Ionicons } from '@expo/vector-icons';
+import { MaterialIcons } from '@expo/vector-icons';
 import { Audio } from 'expo-av';
 
+enum State {
+  Ready = 'ready',
+  Loading = 'Loading...',
+  Playing = 'Playing',
+  Stopped = 'Stopped',
+  Error = 'Error, try again later',
+}
+
 export default function PlayerBar() {
-  const [isPlaying, setIsPlaying] = React.useState(false);
-  const [message, setMessage] = React.useState('Ready');
-  const [audio, setAudio] = React.useState<Audio.Sound>();
+  const [audio, setAudio] = useState<Audio.Sound>();
+  const [state, setState] = useState(State.Ready);
+  const [display, setDisplay] = useState<ReactElement>();
+
+  useEffect(() => {
+    if (state == State.Playing) {
+      setDisplay(
+        <View>
+          <Text style={[styles.text, styles.title]}>Wind of Change</Text>
+          <Text style={[styles.text, styles.details]}>Radio</Text>
+        </View>
+      );
+    } else setDisplay(<Text style={styles.text}>{state}</Text>);
+  }, [state]);
 
   async function startPlayback() {
-    setMessage('Loading...');
+    setState(State.Loading);
     try {
       const { sound } = await Audio.Sound.createAsync({
         uri: 'http://stream.zeno.fm/0tn0vg432mzuv',
       });
       setAudio(sound);
 
-      setMessage('Now Playing');
-      setIsPlaying(true);
+      setState(State.Playing);
       await sound.playAsync();
     } catch (error: any) {
-      setMessage('Error, try again');
+      setState(State.Error);
       alert('Error: ' + error.message);
     }
   }
 
   async function stopPlayback() {
-    await audio?.stopAsync();
-    setIsPlaying(false);
-    setMessage('Stopped');
+    try {
+      await audio?.stopAsync();
+    } catch (e) {}
+    setState(State.Stopped);
   }
 
-  React.useEffect(() => {
+  useEffect(() => {
     return audio
       ? () => {
-          console.log('Unloading Sound');
           audio.unloadAsync();
         }
       : undefined;
@@ -48,31 +66,41 @@ export default function PlayerBar() {
       start={{ x: 0, y: 0.5 }}
       end={{ x: 1, y: 0.5 }}
     >
-      {isPlaying ? (
+      {isPlaying(state) ? (
         <TouchableOpacity onPress={stopPlayback}>
-          <Ionicons name='pause' size={24} color='white' />
+          <MaterialIcons name='pause' size={32} color='white' />
         </TouchableOpacity>
       ) : (
         <TouchableOpacity onPress={startPlayback}>
-          <Ionicons name='play' size={24} color='white' />
+          <MaterialIcons name='play-arrow' size={32} color='white' />
         </TouchableOpacity>
       )}
 
-      <Text style={styles.text}>{message}</Text>
+      <View>{display}</View>
     </LinearGradient>
   );
+}
+
+function isPlaying(state: State) {
+  return state == State.Playing;
 }
 
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     alignItems: 'center',
-    padding: 15,
-    borderWidth: 1,
-    borderColor: '#999',
+    paddingHorizontal: 15,
+    height: 70,
   },
   text: {
     color: 'white',
     marginLeft: 15,
+  },
+  title: {
+    fontWeight: 'bold',
+  },
+  details: {
+    fontWeight: '100',
+    fontSize: 14,
   },
 });

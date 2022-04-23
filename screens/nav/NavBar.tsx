@@ -1,7 +1,6 @@
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import React from 'react';
 import { MaterialIcons } from '@expo/vector-icons';
-import colors from '../../components/utils/colors';
 
 const inactive = '#858585';
 const active = '#000';
