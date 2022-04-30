@@ -1,16 +1,35 @@
 import { StyleSheet, Text, View, Image, ImageBackground } from 'react-native';
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import { NavigationProp, ParamListBase } from '@react-navigation/native';
 import NavBar from '../nav/NavBar';
 import PlayerBar from '../common/PlaybackBar';
-import Header from './Header';
+import * as Notifications from 'expo-notifications';
 
 type Props = {
   navigation: NavigationProp<ParamListBase>;
 };
 
+Notifications.setNotificationHandler({
+  handleNotification: async () => ({
+    shouldShowAlert: true,
+    shouldPlaySound: false,
+    shouldSetBadge: false,
+  }),
+});
+
 export default function HomeScreen({ navigation }: Props) {
+  useEffect(() => {
+    Notifications.scheduleNotificationAsync({
+      content: {
+        title: "You've got mail! 📬",
+        body: 'Here is the notification body',
+        data: { data: 'goes here' },
+      },
+      trigger: { seconds: 1 },
+    });
+  });
+
   return (
     <View style={styles.container}>
       <ImageBackground
