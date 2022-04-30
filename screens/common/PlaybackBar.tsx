@@ -14,8 +14,18 @@ enum State {
 
 export default function PlayerBar() {
   const [audio, setAudio] = useState<Audio.Sound>();
-  const [state, setState] = useState(State.Ready);
+  const [state, setState] = useState(State.Loading);
   const [display, setDisplay] = useState<ReactElement>();
+
+  useEffect(() => {
+    Audio.setAudioModeAsync({
+      staysActiveInBackground: true,
+      playsInSilentModeIOS: true,
+      playThroughEarpieceAndroid: true,
+      interruptionModeIOS: Audio.INTERRUPTION_MODE_IOS_DO_NOT_MIX,
+      interruptionModeAndroid: Audio.INTERRUPTION_MODE_ANDROID_DO_NOT_MIX,
+    }).then(() => setState(State.Ready));
+  }, []);
 
   useEffect(() => {
     if (state == State.Playing) {

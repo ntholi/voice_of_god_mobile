@@ -20,7 +20,7 @@ export default function HomeScreen({ navigation }: Props) {
       >
         <Text style={styles.text}>Voice of God</Text>
         <View style={styles.info}>
-          <Text>Playing...</Text>
+          <Text>Still working on it...</Text>
         </View>
       </ImageBackground>
       <View>
