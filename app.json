@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "voice-of-god-mobile",
-    "slug": "voice-of-god-mobile",
+    "name": "Voice of God",
+    "slug": "voice-of-god",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
