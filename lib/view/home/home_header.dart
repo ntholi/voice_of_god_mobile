@@ -25,7 +25,12 @@ class HomeHeader extends StatelessWidget {
               ),
             ],
           ),
-          IconButton(onPressed: () {}, icon: const Icon(Icons.settings))
+          IconButton(
+              onPressed: () {},
+              icon: const Icon(
+                Icons.settings,
+                color: Colors.grey,
+              ))
         ],
       ),
     );

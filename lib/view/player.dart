@@ -54,17 +54,17 @@ class _PlayerState extends State<Player> {
       return const CircularProgressIndicator();
     } else if (_audioPlayer.playing != true) {
       return IconButton(
-        icon: const Icon(Icons.play_arrow),
+        icon: const Icon(Icons.play_arrow, color: Colors.white),
         onPressed: _audioPlayer.play,
       );
     } else if (state != ProcessingState.completed) {
       return IconButton(
-        icon: const Icon(Icons.pause),
+        icon: const Icon(Icons.pause, color: Colors.white),
         onPressed: _audioPlayer.pause,
       );
     } else {
       return IconButton(
-          icon: const Icon(Icons.replay),
+          icon: const Icon(Icons.replay, color: Colors.white),
           iconSize: 64.0,
           onPressed: () {
             _audioPlayer.seek(Duration.zero,

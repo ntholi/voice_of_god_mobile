@@ -20,7 +20,7 @@ class HomeScreen extends StatelessWidget {
               alignment: AlignmentDirectional.bottomEnd,
               children: [
                 Container(
-                  height: MediaQuery.of(context).size.width / 1.2,
+                  height: MediaQuery.of(context).size.width / 1.4,
                   decoration: BoxDecoration(
                     color: Colors.purple.shade50,
                     shape: BoxShape.circle,
