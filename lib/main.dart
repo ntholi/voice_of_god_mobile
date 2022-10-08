@@ -12,8 +12,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: "Voice of God",
-      home: HomeScreen(),
+      theme: ThemeData(
+        primarySwatch: Colors.deepPurple,
+      ),
+      home: const HomeScreen(),
     );
   }
 }

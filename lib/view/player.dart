@@ -17,10 +17,14 @@ class _PlayerState extends State<Player> {
     _audioPlayer = AudioPlayer();
 
     _audioPlayer
-        .setAudioSource(ConcatenatingAudioSource(children: [
-      AudioSource.uri(Uri.parse(
-          "https://archive.org/download/IGM-V7/IGM%20-%20Vol.%207/25%20Diablo%20-%20Tristram%20%28Blizzard%29.mp3")),
-    ]))
+        .setAudioSource(
+      ConcatenatingAudioSource(
+        children: [
+          AudioSource.uri(Uri.parse(
+              "https://archive.org/download/IGM-V7/IGM%20-%20Vol.%207/25%20Diablo%20-%20Tristram%20%28Blizzard%29.mp3")),
+        ],
+      ),
+    )
         .catchError((error) {
       print("An error occured $error");
     });
