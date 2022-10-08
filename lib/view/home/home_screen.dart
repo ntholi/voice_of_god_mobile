@@ -18,7 +18,6 @@ class HomeScreen extends StatelessWidget {
             const HomeHeader(),
             Stack(
               alignment: AlignmentDirectional.bottomEnd,
-              fit: StackFit.expand,
               children: [
                 Container(
                   height: MediaQuery.of(context).size.width / 1.2,
@@ -27,9 +26,20 @@ class HomeScreen extends StatelessWidget {
                     shape: BoxShape.circle,
                   ),
                 ),
-                IconButton(
-                  onPressed: () {},
-                  icon: const Icon(Icons.play_circle),
+                Container(
+                  margin: const EdgeInsets.only(right: 80),
+                  decoration: BoxDecoration(
+                    color: Colors.deepPurple,
+                    border: Border.all(color: Colors.white, width: 10),
+                    shape: BoxShape.circle,
+                  ),
+                  child: IconButton(
+                    onPressed: () {},
+                    icon: const Icon(
+                      Icons.play_arrow,
+                      color: Colors.white,
+                    ),
+                  ),
                 )
               ],
             ),

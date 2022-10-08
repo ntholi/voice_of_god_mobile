@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:voice_of_god_mobile/view/home/home_screen.dart';
-import 'package:voice_of_god_mobile/view/player.dart';
 
 void main() {
   runApp(const MyApp());
