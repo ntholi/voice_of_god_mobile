@@ -20,14 +20,14 @@ class HomeScreen extends StatelessWidget {
               alignment: AlignmentDirectional.bottomEnd,
               children: [
                 Container(
-                  height: MediaQuery.of(context).size.width / 1.4,
+                  height: MediaQuery.of(context).size.width / 1.3,
                   decoration: BoxDecoration(
                     color: Colors.purple.shade50,
                     shape: BoxShape.circle,
                   ),
                 ),
                 Container(
-                  margin: const EdgeInsets.only(right: 80),
+                  margin: const EdgeInsets.only(right: 50),
                   decoration: BoxDecoration(
                     color: Colors.deepPurple,
                     border: Border.all(color: Colors.white, width: 10),
@@ -44,7 +44,7 @@ class HomeScreen extends StatelessWidget {
               ],
             ),
             Container(
-              height: 50,
+              height: 60,
               decoration: const BoxDecoration(
                 color: Colors.deepPurple,
               ),

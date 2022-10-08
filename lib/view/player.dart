@@ -51,7 +51,14 @@ class _PlayerState extends State<Player> {
 
     if (state == ProcessingState.loading ||
         state == ProcessingState.buffering) {
-      return const CircularProgressIndicator();
+      return const SizedBox(
+        height: 25,
+        width: 25,
+        child: CircularProgressIndicator(
+          strokeWidth: 2,
+          color: Colors.white,
+        ),
+      );
     } else if (_audioPlayer.playing != true) {
       return IconButton(
         icon: const Icon(Icons.play_arrow, color: Colors.white),
