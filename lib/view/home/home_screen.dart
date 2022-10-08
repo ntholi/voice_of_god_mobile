@@ -10,12 +10,29 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.purple.shade50,
+      backgroundColor: Colors.white,
       body: SafeArea(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             const HomeHeader(),
+            Stack(
+              alignment: AlignmentDirectional.bottomEnd,
+              fit: StackFit.expand,
+              children: [
+                Container(
+                  height: MediaQuery.of(context).size.width / 1.2,
+                  decoration: BoxDecoration(
+                    color: Colors.purple.shade50,
+                    shape: BoxShape.circle,
+                  ),
+                ),
+                IconButton(
+                  onPressed: () {},
+                  icon: const Icon(Icons.play_circle),
+                )
+              ],
+            ),
             Container(
               height: 50,
               decoration: const BoxDecoration(
