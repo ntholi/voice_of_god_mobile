@@ -20,8 +20,7 @@ class _PlayerState extends State<Player> {
         .setAudioSource(
       ConcatenatingAudioSource(
         children: [
-          AudioSource.uri(Uri.parse(
-              "https://archive.org/download/IGM-V7/IGM%20-%20Vol.%207/25%20Diablo%20-%20Tristram%20%28Blizzard%29.mp3")),
+          AudioSource.uri(Uri.parse("http://stream.zeno.fm/0tn0vg432mzuv")),
         ],
       ),
     )
