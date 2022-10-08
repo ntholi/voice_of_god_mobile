@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:voice_of_god_mobile/view/player.dart';
 
-import 'bottom_navigation.dart';
+import '../bottom_navigation.dart';
+import 'home_header.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -14,30 +15,7 @@ class HomeScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Row(
-                    children: const [
-                      Text(
-                        "Voice",
-                        style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      Text(
-                        " of God",
-                        style: TextStyle(fontSize: 20),
-                      ),
-                    ],
-                  ),
-                  IconButton(onPressed: () {}, icon: const Icon(Icons.settings))
-                ],
-              ),
-            ),
+            const HomeHeader(),
             Container(
               height: 50,
               decoration: const BoxDecoration(
