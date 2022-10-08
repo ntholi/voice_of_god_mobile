@@ -46,7 +46,7 @@ class HomeScreen extends StatelessWidget {
             Column(
               children: [
                 Padding(
-                  padding: const EdgeInsets.all(20),
+                  padding: const EdgeInsets.all(25),
                   child: Column(children: [
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -65,21 +65,21 @@ class HomeScreen extends StatelessWidget {
                     ),
                     const SizedBox(height: 5),
                     Row(children: [
-                      Text(
+                      const Text(
                         "Up Next",
                         style: TextStyle(color: Colors.grey, fontSize: 13),
                       ),
                       Container(
                         width: 20,
                         alignment: AlignmentDirectional.center,
-                        child: Text(
+                        child: const Text(
                           "\u2981",
                           style: TextStyle(
                             color: Colors.deepPurple,
                           ),
                         ),
                       ),
-                      Text(
+                      const Text(
                         "Prophetic Hour",
                         style: TextStyle(color: Colors.grey, fontSize: 13),
                       ),
@@ -89,8 +89,11 @@ class HomeScreen extends StatelessWidget {
                 Container(
                   height: 50,
                   decoration: const BoxDecoration(
-                    color: Colors.deepPurple,
-                  ),
+                      color: Colors.deepPurple,
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(5),
+                        topRight: Radius.circular(5),
+                      )),
                   child: Row(
                     children: [
                       TextButton(
