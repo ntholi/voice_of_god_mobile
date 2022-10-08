@@ -34,49 +34,39 @@ class _PlayerState extends State<Player> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: StreamBuilder<PlayerState>(
-          stream: _audioPlayer.playerStateStream,
-          builder: (context, snapshot) {
-            final playerState = snapshot.data;
-            return _playerButton(playerState);
-          },
-        ),
-      ),
+    return StreamBuilder<PlayerState>(
+      stream: _audioPlayer.playerStateStream,
+      builder: (context, snapshot) {
+        final playerState = snapshot.data;
+        return _playerButton(playerState);
+      },
     );
   }
 
   Widget _playerButton(PlayerState? playerState) {
-    final processingState = playerState?.processingState;
+    final state = playerState?.processingState;
 
-    if (processingState == ProcessingState.loading ||
-        processingState == ProcessingState.buffering) {
-      return Container(
-        margin: EdgeInsets.all(8.0),
-        width: 64.0,
-        height: 64.0,
-        child: CircularProgressIndicator(),
-      );
+    if (state == ProcessingState.loading ||
+        state == ProcessingState.buffering) {
+      return const CircularProgressIndicator();
     } else if (_audioPlayer.playing != true) {
       return IconButton(
-        icon: Icon(Icons.play_arrow),
-        iconSize: 64.0,
+        icon: const Icon(Icons.play_arrow),
         onPressed: _audioPlayer.play,
       );
-    } else if (processingState != ProcessingState.completed) {
+    } else if (state != ProcessingState.completed) {
       return IconButton(
-        icon: Icon(Icons.pause),
-        iconSize: 64.0,
+        icon: const Icon(Icons.pause),
         onPressed: _audioPlayer.pause,
       );
     } else {
       return IconButton(
-        icon: Icon(Icons.replay),
-        iconSize: 64.0,
-        onPressed: () => _audioPlayer.seek(Duration.zero,
-            index: _audioPlayer.effectiveIndices?.first),
-      );
+          icon: const Icon(Icons.replay),
+          iconSize: 64.0,
+          onPressed: () {
+            _audioPlayer.seek(Duration.zero,
+                index: _audioPlayer.effectiveIndices?.first);
+          });
     }
   }
 }

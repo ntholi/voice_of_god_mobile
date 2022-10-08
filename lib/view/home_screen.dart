@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:voice_of_god_mobile/view/player.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -20,7 +21,7 @@ class HomeScreen extends StatelessWidget {
                 children: [
                   ElevatedButton(
                     onPressed: () {},
-                    child: const Text("Play"),
+                    child: const Player(),
                   ),
                 ],
               ),

@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: "Voice of God",
-      home: Player(),
+      home: HomeScreen(),
     );
   }
 }
