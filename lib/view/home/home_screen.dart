@@ -43,19 +43,64 @@ class HomeScreen extends StatelessWidget {
                 )
               ],
             ),
-            Container(
-              height: 60,
-              decoration: const BoxDecoration(
-                color: Colors.deepPurple,
-              ),
-              child: Row(
-                children: [
-                  TextButton(
-                    onPressed: () {},
-                    child: const Player(),
+            Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(20),
+                  child: Column(children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: const [
+                        Text(
+                          "Ntate Lebsiba",
+                          style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                        Chip(
+                            labelStyle: TextStyle(fontSize: 11),
+                            label: Text("On Air")),
+                      ],
+                    ),
+                    const SizedBox(height: 5),
+                    Row(children: [
+                      Text(
+                        "Up Next",
+                        style: TextStyle(color: Colors.grey, fontSize: 13),
+                      ),
+                      Container(
+                        width: 20,
+                        alignment: AlignmentDirectional.center,
+                        child: Text(
+                          "\u2981",
+                          style: TextStyle(
+                            color: Colors.deepPurple,
+                          ),
+                        ),
+                      ),
+                      Text(
+                        "Prophetic Hour",
+                        style: TextStyle(color: Colors.grey, fontSize: 13),
+                      ),
+                    ]),
+                  ]),
+                ),
+                Container(
+                  height: 50,
+                  decoration: const BoxDecoration(
+                    color: Colors.deepPurple,
                   ),
-                ],
-              ),
+                  child: Row(
+                    children: [
+                      TextButton(
+                        onPressed: () {},
+                        child: const Player(),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
             ),
           ],
         ),
